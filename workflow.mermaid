@@ -1,0 +1,10 @@
+flowchart TD
+    A[Researcher Input] --> B{Known or New Disease?}
+    B -->|Known Disease| C[Web Scraping + Database Fetch]
+    B -->|New Disease| D[Manual Protein/DNA Input]
+    C --> E[AI/ML Pipeline]
+    D --> E[AI/ML Pipeline]
+    E --> F[Generate Candidate Molecules]
+    F --> G[ADMET Filtering & Ranking]
+    G --> H[Results Dashboard]
+    H --> I[CSV/PDF Export]

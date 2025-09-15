@@ -1,0 +1,37 @@
+flowchart TD
+    A["Login Page"] --> B["Dashboard Home"]
+
+    B --> C["Input Module"]
+    B --> D["Results Module"]
+    B --> E["History / Downloads"]
+    B --> F["Help & About"]
+
+    %% Input Module
+    C --> C1["Option 1: Known Disease"]
+    C --> C2["Option 2: New Disease"]
+
+    C1 --> C1a["Text Field: Disease Name"]
+    C1 --> C1b["Auto-fetch Protein and DNA Structures via Web Scraping"]
+    C1 --> C1c["Fetch Metadata (Symptoms, Effects, References)"]
+    C1 --> Submit1["Submit Button"]
+
+    C2 --> C2a["Manual Input: Protein Structure Upload (PDB File)"]
+    C2 --> C2b["Manual Input: DNA Sequence Upload (FASTA File)"]
+    C2 --> C2c["Text Area: Disease Details and Symptoms"]
+    C2 --> Submit2["Submit Button"]
+
+    %% Results Module
+    D --> D1["Table: Candidate Molecules"]
+    D --> D2["Score Column: Binding Affinity and Safety Score"]
+    D --> D3["Details Popup: Molecular Structure (3D Viewer)"]
+    D --> D4["ADMET Report Download"]
+
+    %% History / Downloads
+    E --> E1["Saved Projects List"]
+    E --> E2["CSV / PDF Download Buttons"]
+    E --> E3["Timestamp and Researcher ID"]
+
+    %% Help
+    F --> F1["About the Platform"]
+    F --> F2["How to Input Data"]
+    F --> F3["Contact Support"]

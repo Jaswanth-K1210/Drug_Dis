@@ -1,0 +1,31 @@
+graph LR
+    subgraph Frontend[Frontend React + Tailwind]
+        UI[Dashboard UI] --> API_Gateway
+    end
+
+    subgraph Backend[Backend FastAPI + Python]
+        API_Gateway --> InputService[Input Service]
+        InputService --> Scraper[Web Scraping / DB APIs]
+        InputService --> UploadService[Manual Upload Handler]
+
+        Scraper --> DataLayer[Data Normalization]
+        UploadService --> DataLayer
+
+        DataLayer --> ML_Pipeline[ML Pipeline]
+        ML_Pipeline --> Generator[ Molecule Generator ]
+        Generator --> ADMET[ADMET Predictor]
+        ADMET --> Ranker[Candidate Ranking Engine]
+
+        Ranker --> ResultsAPI[Results Service]
+    end
+
+    subgraph Storage[PostgreSQL + Files]
+        DB[(Disease + Molecule Data)]
+        Logs[(Audit Logs)]
+    end
+
+    ResultsAPI --> DB
+    ResultsAPI --> Logs
+
+    ResultsAPI --> FrontendUI[Results Dashboard]
+    FrontendUI --> Exporter[CSV/PDF Export]
